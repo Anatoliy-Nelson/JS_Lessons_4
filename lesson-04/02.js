@@ -16,7 +16,7 @@
 */
 
 function findUniqueElements(array) {
-    let result = [];
+  let result = [];
 
   for (let element of array) {
     if (!result.includes(element)) {
@@ -25,5 +25,4 @@ function findUniqueElements(array) {
   }
 
   return result;
-}
 }
