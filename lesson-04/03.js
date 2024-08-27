@@ -18,20 +18,25 @@ findCommonElements([1, 2, 3], [2, 3, 4]) // [2, 3]
 */
 
 function findCommonElements(array1, array2) {
-    let ai = 0;
-    let bi = 0;
-    const intersection = [];
 
-    while (ai < array1.length && bi < array2.length) {
-      if (array1[ai] < array2[bi]) {
-        ai++;
-      } else if (array1[ai] > array2[bi]) {
-        bi++;
-      } else {
-            intersection.push(array1[ai]);
-            ai++;
-            bi++;
-      }
+  // Создаем Set для хранения уникальных элементов из первого массива
+  const set1 = new Set(array1);
+
+  // Используем Set для хранения общих элементов
+  const intersection = [];
+
+  // Проходим по второму массиву и проверяем наличие каждого элемента в set1
+  for (const element of array2) {
+    if (set1.has(element)) {
+
+      // Добавляем элемент в результат, если он найден в первом массиве
+      intersection.push(element);
+
+      // Удаляем элемент из set1, чтобы избежать повторного добавления
+      set1.delete(element);
     }
-    return intersection;
+  }
+
+  return intersection;
+  
 }
